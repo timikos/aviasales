@@ -8,7 +8,8 @@ const MainContent = () => {
       <TabsPrice />
       <TicketList />
       <button
-        onClick=""
+        type="button"
+        className="btn btn-primary btn__more"
       >
         ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ!
       </button>

@@ -1,0 +1,11 @@
+@import '../../variables';
+
+.ticket__container {
+  width: 502px;
+  height: 184px;
+  border: 1px solid #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background: $color-secondary;
+  box-shadow: 1px 2px 8px 0px rgba(34, 60, 80, 0.08);
+}

@@ -1,8 +1,8 @@
 @import "../../variables";
 
 .tabs__container {
-  max-width: 494px;
-  margin-bottom: 50px;
+  max-width: 502px;
+  margin-bottom: 20px;
 }
 
 .btn-group{
@@ -10,25 +10,12 @@
 }
 
 .tab__btn{
+  background: $color-secondary;
   border: none;
-  width: 165px;
+  width: 168px;
   height: 50px;
   font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.tab__btn.Mui-selected{
-  background: $color-primary;
-  //color: white;
-}
-
-.MuiTab-root{
-  color: white;
-}
-
-.MuiTabPanel-root{
-  margin-top: 20px;
-  border: 2px solid red;
 }
