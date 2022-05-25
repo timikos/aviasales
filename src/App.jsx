@@ -1,16 +1,23 @@
 import './App.scss'
 import AsapiService from './services/asapi'
 import Header from './components/header'
-import TabsPrice from './components/tabs-price'
+import MainContent from './components/main-content'
 import Filter from './components/filter'
+import SearchIdSession from './services/idapi'
 
 function App() {
-  AsapiService()
+  const searchId = SearchIdSession()
+  setTimeout(() => {
+    AsapiService(searchId)
+  }, 1500)
+
   return (
     <>
       <Header />
-      <TabsPrice />
-      <Filter />
+      <div className="wrapper__main-content">
+        <Filter />
+        <MainContent />
+      </div>
     </>
   )
 }
