@@ -1,7 +1,34 @@
-.btn-group__container {
+@import "../../variables";
 
+.tabs__container {
+  max-width: 494px;
+  margin-bottom: 50px;
 }
 
-.btn-tab_active{
-  background: #000;
+.btn-group{
+  border: 1px solid #DFE5EC;
+}
+
+.tab__btn{
+  border: none;
+  width: 165px;
+  height: 50px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab__btn.Mui-selected{
+  background: $color-primary;
+  //color: white;
+}
+
+.MuiTab-root{
+  color: white;
+}
+
+.MuiTabPanel-root{
+  margin-top: 20px;
+  border: 2px solid red;
 }
