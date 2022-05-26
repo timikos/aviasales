@@ -1,12 +1,6 @@
 import './tabs-price.scss'
 
 const TabsPrice = () => {
-  // const [value, setValue] = useState('1')
-  //
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue)
-  // }
-
   return (
     <div className="tabs__container">
       <div className="btn-group" role="group" aria-label="Basic">

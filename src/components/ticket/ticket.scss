@@ -1,6 +1,7 @@
 @import '../../variables';
 
 .ticket__container {
+  position: relative;
   width: 502px;
   height: 184px;
   border: 1px solid #f9f9f9;
@@ -8,4 +9,40 @@
   margin-bottom: 20px;
   background: $color-secondary;
   box-shadow: 1px 2px 8px 0px rgba(34, 60, 80, 0.08);
+}
+
+.ticket__price {
+  display: inline-block;
+  position: relative;
+  top: 20px;
+  left: 15px;
+  color: $color-primary;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.ticket__logo {
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.ticket__data {
+  display: flex;
+  margin: 5px 80px 0 15px;
+  justify-content: space-between;
+}
+
+.ticket__column {
+
+  :nth-child(1) {
+    color: #A0B0B9;
+    font-size: 12px;
+  }
+
+  :nth-child(2) {
+    font-weight: 550;
+    font-size: 14px;
+  }
 }
