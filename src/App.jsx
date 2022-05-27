@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import Header from './components/header'
 import MainContent from './components/main-content'
 import Filter from './components/filter'
-import * as actions from './redux/actions'
+import * as actions from './redux/actions/actions'
 // import AsapiService from './services/asapi'
 // import SearchIdSession from './services/idapi'
 import './App.scss'
 
-function App({ counter, test3 }) {
+function App({ async_test, test3 }) {
   // const searchId = SearchIdSession()
   // console.log(counter)
   // console.log(store.getState())
@@ -25,7 +25,8 @@ function App({ counter, test3 }) {
 
 const mapStateToProps = (state) => {
   return {
-    counter: state.counter
+    counter: state.counter,
+    ticket: state.ticket
   }
 }
 
