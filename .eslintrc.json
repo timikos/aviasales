@@ -28,6 +28,7 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "default-param-last": "off",
     "react/function-component-definition": "off",
     "react/jsx-indent-props": "off",
     "import/no-cycle": "off",

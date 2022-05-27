@@ -1,8 +1,13 @@
+import axios from 'axios'
+
 export default function AsapiService(searchId) {
-  // const searchId = SearchIdSession()
-  fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
+  axios.get('https://aviasales-test-api.kata.academy/tickets', {
+    perams: {
+      searchId,
+    }
+  })
     .then(response => {
-      return response
+      response
     })
     .catch((e) => e)
 }

@@ -1,6 +1,9 @@
+import axios from 'axios'
+
 export default function SearchIdSession() {
-  fetch('https://aviasales-test-api.kata.academy/search')
-    .then(response => response.json())
-    .then(jsonResponse => jsonResponse)
-    .catch(err => err)
+  axios.get('https://aviasales-test-api.kata.academy/search')
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch(e => e)
 }

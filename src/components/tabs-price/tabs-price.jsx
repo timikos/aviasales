@@ -11,6 +11,7 @@ const TabsPrice = () => {
           id="btnradio1"
           autoComplete="off"
           checked=""
+          onChange={() => {}}
         />
         <label
           className="btn btn-outline-primary tab__btn"
