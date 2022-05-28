@@ -1,3 +1,4 @@
+import { connect } from 'react-redux'
 import './ticket.scss'
 
 import logo from '../static/test-logo.svg'
@@ -39,4 +40,4 @@ const Ticket = () => {
   )
 }
 
-export default Ticket
+export default connect()(Ticket)

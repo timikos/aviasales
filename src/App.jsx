@@ -1,21 +1,20 @@
 import { connect } from 'react-redux'
+import { useEffect } from 'react'
 
 import Header from './components/header'
 import MainContent from './components/main-content'
 import Filter from './components/filter'
-import * as actions from './redux/actions/actions'
-// import AsapiService from './services/asapi'
-// import SearchIdSession from './services/idapi'
+import * as ticketsAction from './redux/actions/tickets'
+
 import './App.scss'
 
-function App({ async_test, test3 }) {
-  // const searchId = SearchIdSession()
-  // console.log(counter)
-  // console.log(store.getState())
+function App(props) {
+  useEffect(() => props.fetchId(), [])
   return (
     <>
+      {props.fetchId()}
       <Header />
-      <div className="wrapper__main-content" onClick={test3}>
+      <div className="wrapper__main-content">
         <Filter />
         <MainContent />
       </div>
@@ -25,9 +24,8 @@ function App({ async_test, test3 }) {
 
 const mapStateToProps = (state) => {
   return {
-    counter: state.counter,
-    ticket: state.ticket
+    searchId: state.ticketsReducer.searchId
   }
 }
 
-export default connect(mapStateToProps, actions)(App)
+export default connect(mapStateToProps, ticketsAction)(App)
