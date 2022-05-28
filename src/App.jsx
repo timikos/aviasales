@@ -8,11 +8,10 @@ import * as ticketsAction from './redux/actions/tickets'
 
 import './App.scss'
 
-function App(props) {
-  useEffect(() => props.fetchId(), [])
+function App({ fetchId }) {
+  useEffect(() => fetchId(), [])
   return (
     <>
-      {props.fetchId()}
       <Header />
       <div className="wrapper__main-content">
         <Filter />

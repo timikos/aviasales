@@ -41,14 +41,14 @@ export function fetchIdError(e) {
   }
 }
 
-export function fetchTickets() {
-  return async (dispatch, searchId) => {
+export function fetchTickets(searchId) {
+  return async (dispatch) => {
     dispatch(fetchTicketsStart)
     try {
-      const response = await axios.get('https://aviasales-test-api.kata.academy/tickets', {
-        perams: {
-          searchId,
-        }
+      const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets${searchId}`, {
+        // perams: {
+        //   searchId,
+        // }
       })
       const tickets = []
       Object.keys(response.data).forEach((key, index) => {
