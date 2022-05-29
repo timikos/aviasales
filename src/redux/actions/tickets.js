@@ -13,7 +13,7 @@ export function fetchId() {
     dispatch(fetchIdStart())
     try {
       const response = axios.get('https://aviasales-test-api.kata.academy/search')
-      const searchId = (await response).data.searchId
+      const { searchId } = (await response).data
       dispatch(fetchIdSuccess(searchId))
     } catch (e) {
       dispatch(fetchIdError(e))
@@ -42,21 +42,11 @@ export function fetchIdError(e) {
 }
 
 export function fetchTickets(searchId) {
-  return async (dispatch) => {
+  return async dispatch => {
     dispatch(fetchTicketsStart)
     try {
-      const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets${searchId}`, {
-        // perams: {
-        //   searchId,
-        // }
-      })
-      const tickets = []
-      Object.keys(response.data).forEach((key, index) => {
-        tickets.push({
-          id: key,
-          name: `Ticket ${index}`
-        })
-      })
+      const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
+      const tickets = [...response.data.tickets]
       dispatch(fetchTicketsSuccess(tickets))
     } catch (e) {
       dispatch(fetchTicketsError(e))

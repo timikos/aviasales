@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
+import { useEffect } from 'react'
 
 import { fetchId, fetchTickets } from '../../redux/actions/tickets'
 import './ticket-list.scss'
 import Ticket from '../ticket'
-import { useEffect } from 'react'
 
 const TicketList = ({ fetchTickets, searchId }) => {
   const tmpArr = [1, 2, 3, 4, 5]
@@ -18,7 +18,9 @@ const TicketList = ({ fetchTickets, searchId }) => {
       </li>
     )
   })
-  useEffect(() => fetchTickets(searchId))
+  useEffect(() => {
+    fetchTickets(searchId)
+  })
 
   return (
     <ul className="ticket-list__container">
@@ -37,7 +39,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchTickets: () => dispatch(fetchTickets()),
+    fetchTickets: (searchId) => dispatch(fetchTickets(searchId)),
     fetchId: () => dispatch(fetchId())
   }
 }
