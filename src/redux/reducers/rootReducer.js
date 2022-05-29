@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
 import ticketsReducer from './ticketsReducer'
-import asyncReducer from './asyncReducer'
+import checkboxReducer from './checkboxReducer'
 
 export default combineReducers({
   ticketsReducer,
-  asyncReducer
+  checkboxReducer
 })
