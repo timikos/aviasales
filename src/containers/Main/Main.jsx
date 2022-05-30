@@ -1,11 +1,11 @@
 import TicketList from '../../components/TicketList'
 import './Main.scss'
-import TabsPrice from '../../components/TabsPrice'
+import TabsSort from '../../components/TabsSort'
 
 const Main = () => {
   return (
     <section className="main__container">
-      <TabsPrice />
+      <TabsSort />
       <TicketList />
       <button
         type="button"

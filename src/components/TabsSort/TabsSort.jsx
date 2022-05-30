@@ -1,17 +1,25 @@
-import './TabsPrice.scss'
+import { useDispatch, useSelector } from 'react-redux'
 
-const TabsPrice = () => {
+import { setTabCheap, setTabFast, setTabOptimal } from '../../redux/actions/sorts'
+
+import './TabsSort.scss'
+
+const TabsSort = () => {
+  const state = useSelector(state => ({
+    activeSort: state.sortReducer
+  }))
+  const dispatch = useDispatch()
   return (
     <div className="tabs__container">
       <div className="btn-group" role="group" aria-label="Basic">
         <input
           type="radio"
           className="btn-check"
-          name="btnradio"
+          name={state.activeSort.sort}
           id="btnradio1"
           autoComplete="off"
           checked=""
-          onChange={() => {}}
+          onChange={() => dispatch(setTabCheap())}
         />
         <label
           className="btn btn-outline-primary tab__btn"
@@ -22,9 +30,10 @@ const TabsPrice = () => {
         <input
           type="radio"
           className="btn-check"
-          name="btnradio"
+          name={state.activeSort.sort}
           id="btnradio2"
           autoComplete="off"
+          onChange={() => dispatch(setTabFast())}
         />
         <label
           className="btn btn-outline-primary tab__btn"
@@ -32,13 +41,13 @@ const TabsPrice = () => {
         >
           САМЫЙ БЫСТРЫЙ
         </label>
-
         <input
           type="radio"
           className="btn-check"
-          name="btnradio"
+          name={state.activeSort.sort}
           id="btnradio3"
           autoComplete="off"
+          onChange={() => dispatch(setTabOptimal())}
         />
         <label
           className="btn btn-outline-primary tab__btn"
@@ -51,4 +60,4 @@ const TabsPrice = () => {
   )
 }
 
-export default TabsPrice
+export default TabsSort

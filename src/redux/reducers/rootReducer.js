@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
 import ticketsReducer from './ticketsReducer'
-import checkboxReducer from './checkboxReducer'
+import filterReducer from './filterReducer'
+import sortReducer from './sortReducer'
 
 export default combineReducers({
   ticketsReducer,
-  checkboxReducer
+  filterReducer,
+  sortReducer
 })

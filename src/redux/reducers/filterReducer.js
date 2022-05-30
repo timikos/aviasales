@@ -4,7 +4,6 @@ import {
   ACTIVE_CHECKBOX_THREE,
   ACTIVE_CHECKBOX_TWO,
   ACTIVE_CHECKBOX_WITHOUT,
-  ACTIVE_TAB_PRICE,
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -15,7 +14,7 @@ const initialState = {
   three: false,
 }
 
-const checkboxReducer = (state = initialState, action) => {
+const filterReducer = (state = initialState, action) => {
   switch (action.type) {
   case ACTIVE_CHECKBOX_ALL:
     if (state.all === false) {
@@ -90,13 +89,9 @@ const checkboxReducer = (state = initialState, action) => {
     return {
       ...state, all: !state.all, three: !state.three
     }
-  case ACTIVE_TAB_PRICE:
-    return {
-      ...state, activeTabPrice: ''
-    }
   default:
     return state
   }
 }
 
-export default checkboxReducer
+export default filterReducer

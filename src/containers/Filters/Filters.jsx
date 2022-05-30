@@ -3,11 +3,11 @@ import './Filters.scss'
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 
-import * as checkboxActions from '../../redux/actions/checkbox'
+import * as checkboxActions from '../../redux/actions/filters'
 
 const Filters = () => {
   const state = useSelector(state => ({
-    filters: state.checkboxReducer
+    filters: state.filterReducer
   }))
   const dispatch = useDispatch()
 
