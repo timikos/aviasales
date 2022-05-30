@@ -17,7 +17,7 @@ const checkboxReducer = (state = initialState, action) => {
   switch (action.type) {
   case ACTIVE_CHECKBOX_ALL:
     return {
-      activeCheckbox: 'all'
+      ...state, activeCheckbox: 'all'
     }
   case ACTIVE_CHECKBOX_WITHOUT:
     return {

@@ -1,8 +1,8 @@
-import TicketList from '../ticket-list'
-import './main-content.scss'
-import TabsPrice from '../tabs-price'
+import TicketList from '../../components/TicketList'
+import './Main.scss'
+import TabsPrice from '../../components/TabsPrice'
 
-const MainContent = () => {
+const Main = () => {
   return (
     <section className="main__container">
       <TabsPrice />
@@ -17,4 +17,4 @@ const MainContent = () => {
   )
 }
 
-export default MainContent
+export default Main

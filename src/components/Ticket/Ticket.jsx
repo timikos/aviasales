@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import './ticket.scss'
+import './Ticket.scss'
 
-import logo from '../static/test-logo.svg'
+import logo from '../../static/test-logo.svg'
 
 const Ticket = () => {
   return (

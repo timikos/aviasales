@@ -10,7 +10,7 @@ const initialState = {
   tickets: [],
   loading: false,
   searchId: '',
-  error: null
+  error: null,
 }
 
 const ticketsReducer = (state = initialState, action) => {

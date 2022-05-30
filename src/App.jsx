@@ -1,21 +1,23 @@
 import { connect } from 'react-redux'
 import { useEffect } from 'react'
 
-import Header from './components/header'
-import MainContent from './components/main-content'
-import Filter from './components/filter'
+import Header from './containers/Header'
+import Main from './containers/Main'
+import Filters from './containers/Filters'
 import * as ticketsAction from './redux/actions/tickets'
 
 import './App.scss'
 
 function App({ fetchId }) {
-  useEffect(() => fetchId(), [])
+  useEffect(() => {
+    fetchId()
+  }, [])
   return (
     <>
       <Header />
       <div className="wrapper__main-content">
-        <Filter />
-        <MainContent />
+        <Filters />
+        <Main />
       </div>
     </>
   )

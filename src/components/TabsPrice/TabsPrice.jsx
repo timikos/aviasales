@@ -1,4 +1,4 @@
-import './tabs-price.scss'
+import './TabsPrice.scss'
 
 const TabsPrice = () => {
   return (

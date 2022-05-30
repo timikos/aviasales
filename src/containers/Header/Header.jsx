@@ -1,6 +1,6 @@
-import './header.scss'
+import './Header.scss'
 
-import logo from '../static/logo.svg'
+import logo from '../../static/logo.svg'
 
 const Header = () => {
   return (
