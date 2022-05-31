@@ -28,6 +28,7 @@
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
+    "no-nested-ternary": "off",
     "no-use-before-define": "off",
     "default-param-last": "off",
     "react/function-component-definition": "off",

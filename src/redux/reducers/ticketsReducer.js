@@ -4,6 +4,7 @@ import {
   FETCH_TICKETS_ERROR,
   FETCH_TICKETS_START,
   FETCH_TICKETS_SUCCESS,
+  SHOW_MORE_TICKETS,
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -11,10 +12,15 @@ const initialState = {
   loading: false,
   searchId: '',
   error: null,
+  showLen: 5,
 }
 
 const ticketsReducer = (state = initialState, action) => {
   switch (action.type) {
+  case SHOW_MORE_TICKETS:
+    return {
+      ...state, showLen: state.showLen + 5
+    }
   case FETCH_TICKETS_START:
     return {
       ...state, loading: true

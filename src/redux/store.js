@@ -5,6 +5,7 @@ import rootReducer from './reducers/rootReducer'
 
 const loggerMiddleware = store => next => action => {
   const result = next(action)
+  console.log('Middleware', result)
   console.log('Middleware', store.getState())
   return result
 }

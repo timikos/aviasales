@@ -9,25 +9,26 @@ const TicketList = () => {
   const state = useSelector(state => ({
     tickets: state.ticketsReducer.tickets,
     loading: state.ticketsReducer.loading,
-    searchId: state.ticketsReducer.searchId
+    searchId: state.ticketsReducer.searchId,
+    showLen: state.ticketsReducer.showLen,
   }))
   const dispatch = useDispatch()
-
-  const tmpArr = [1, 2, 3, 4, 5]
+  const tmpArr = state.tickets
   const elements = tmpArr.map((elem, index) => {
-    return (
-      <li key={index}>
-        <Ticket
-          elem={elem}
-          index={index}
-          {...elem}
-        />
-      </li>
-    )
+    if (index < state.showLen) {
+      return (
+        <li key={index}>
+          <Ticket
+            index={index}
+            {...elem}
+          />
+        </li>
+      )
+    }
   })
   useEffect(() => {
     dispatch(fetchTickets(state.searchId))
-  }, [])
+  })
 
   return (
     <ul className="ticket-list__container">

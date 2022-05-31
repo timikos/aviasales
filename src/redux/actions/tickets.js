@@ -6,7 +6,14 @@ import {
   FETCH_TICKETS_ERROR,
   FETCH_TICKETS_START,
   FETCH_TICKETS_SUCCESS,
+  SHOW_MORE_TICKETS,
 } from './actionTypes'
+
+export function showMore() {
+  return {
+    type: SHOW_MORE_TICKETS,
+  }
+}
 
 export function fetchId() {
   return async dispatch => {
@@ -46,6 +53,9 @@ export function fetchTickets(searchId) {
     dispatch(fetchTicketsStart)
     try {
       const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
+      if (response.data.stop) {
+        return
+      }
       const tickets = [...response.data.tickets]
       dispatch(fetchTicketsSuccess(tickets))
     } catch (e) {
