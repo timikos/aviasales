@@ -21,7 +21,7 @@
 .ldio-rnybq3wpv4 div {
   position: absolute;
   width: 40px;
-  height: 40px;
+  height: 20px;
   border-radius: 50%;
   transform: translate(80px,80px) scale(1);
   background: #e15b64;
@@ -45,8 +45,6 @@
       background: #abbd81;
     }
 .loadingio-spinner-ellipsis-esvthtwa5b5 {
-  width: 200px;
-  height: 200px;
   display: inline-block;
   overflow: hidden;
   background: $color-background;
@@ -54,7 +52,9 @@
 .ldio-rnybq3wpv4 {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
+  top:20px;
+  left:38%;
   transform: translateZ(0) scale(1);
   backface-visibility: hidden;
   transform-origin: 0 0; /* see note above */

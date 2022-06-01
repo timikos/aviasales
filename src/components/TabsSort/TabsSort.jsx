@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { setTabCheap, setTabFast, setTabOptimal } from '../../redux/actions/sorts'
-
 import './TabsSort.scss'
 import * as ticketAction from '../../redux/actions/tickets'
 

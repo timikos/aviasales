@@ -14,7 +14,6 @@ const TicketList = () => {
     sort: state.sortReducer.sort
   }))
   let ticketsArr = []
-
   if (state.filters.without === true) {
     ticketsArr = [...ticketsArr,
       ...state.tickets.filter(elem => elem.segments[0].stops.length === 0)]
@@ -43,7 +42,6 @@ const TicketList = () => {
       (a, b) => (a.price + a.segments[0].duration) - (b.price + b.segments[0].duration)
     )
     : null
-  console.log(ticketsArr)
   return (
     <ul className="ticket-list__container">
       {ticketsArr.slice(0, state.showLen).map((elem, index) => {

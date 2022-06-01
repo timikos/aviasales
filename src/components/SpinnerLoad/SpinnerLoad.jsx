@@ -1,5 +1,3 @@
-import React from 'react'
-
 import './SpinnerLoad.scss'
 
 const SpinnerLoad = () => {

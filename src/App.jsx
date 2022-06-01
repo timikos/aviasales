@@ -1,16 +1,16 @@
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 
 import Header from './containers/Header'
 import Main from './containers/Main'
 import Filters from './containers/Filters'
-import * as ticketsAction from './redux/actions/tickets'
-
 import './App.scss'
+import { fetchId } from './redux/actions/tickets'
 
-function App({ fetchId }) {
+function App() {
+  const dispatch = useDispatch()
   useEffect(() => {
-    fetchId()
+    dispatch(fetchId())
   }, [])
   return (
     <>
@@ -23,10 +23,4 @@ function App({ fetchId }) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    searchId: state.ticketsReducer.searchId
-  }
-}
-
-export default connect(mapStateToProps, ticketsAction)(App)
+export default App
