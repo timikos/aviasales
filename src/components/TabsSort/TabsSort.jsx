@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setTabCheap, setTabFast, setTabOptimal } from '../../redux/actions/sorts'
 
 import './TabsSort.scss'
+import * as ticketAction from '../../redux/actions/tickets'
 
 const TabsSort = () => {
   const state = useSelector(state => ({
@@ -10,7 +11,7 @@ const TabsSort = () => {
   }))
   const dispatch = useDispatch()
   return (
-    <div className="tabs__container">
+    <div className="tabs__container" onChange={() => dispatch(ticketAction.nullShowMore())}>
       <div className="btn-group" role="group" aria-label="Basic">
         <input
           type="radio"

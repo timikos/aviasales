@@ -1,17 +1,25 @@
 import axios from 'axios'
 
 import {
-  FETCH_ID_ERROR, FETCH_ID_START,
+  FETCH_ID_ERROR,
+  FETCH_ID_START,
   FETCH_ID_SUCCESS,
   FETCH_TICKETS_ERROR,
   FETCH_TICKETS_START,
   FETCH_TICKETS_SUCCESS,
   SHOW_MORE_TICKETS,
+  NULL_SHOW_MORE_TICKETS,
 } from './actionTypes'
 
 export function showMore() {
   return {
     type: SHOW_MORE_TICKETS,
+  }
+}
+
+export function nullShowMore() {
+  return {
+    type: NULL_SHOW_MORE_TICKETS,
   }
 }
 
@@ -51,17 +59,17 @@ export function fetchIdError(e) {
 export function fetchTickets(searchId) {
   return async dispatch => {
     // if (searchId) {
-      dispatch(fetchTicketsStart())
-      try {
-        const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
-        if (response.data.stop) {
-          return
-        }
-        const tickets = [...response.data.tickets]
-        dispatch(fetchTicketsSuccess(tickets))
-      } catch (e) {
-        dispatch(fetchTicketsError(e))
+    dispatch(fetchTicketsStart())
+    try {
+      const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
+      if (response.data.stop) {
+        return
       }
+      const tickets = [...response.data.tickets]
+      dispatch(fetchTicketsSuccess(tickets))
+    } catch (e) {
+      dispatch(fetchTicketsError(e))
+    }
     // }
   }
 }

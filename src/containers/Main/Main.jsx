@@ -5,20 +5,27 @@ import TabsSort from '../../components/TabsSort'
 import './Main.scss'
 import * as ticketsActions from '../../redux/actions/tickets'
 import SpinnerLoad from '../../components/SpinnerLoad'
+import { useEffect } from 'react'
+import { fetchTickets } from '../../redux/actions/tickets'
 
 const Main = () => {
   const state = useSelector(state => ({
+    tickets: state.ticketsReducer.tickets,
+    searchId: state.ticketsReducer.searchId,
     loadingTickets: state.ticketsReducer.loadingTickets,
     showLen: state.ticketsReducer.showLen
   }))
   const dispatch = useDispatch()
-  console.log(state.loadingTickets)
+  const noResults = <div className="ticket-list__no-results">Рейсов, подходящих под заданные фильтры, не найдено</div>
+  useEffect(() => {
+    dispatch(fetchTickets(state.searchId))
+  }, [state.searchId])
+
   return (
     <section className="main__container">
       {state.loadingTickets ? <SpinnerLoad /> : null }
-      {/* <SpinnerLoad /> */}
       <TabsSort />
-      <TicketList />
+      {(!state.tickets.length && noResults) || <TicketList />}
       <button
         onClick={() => dispatch(ticketsActions.showMore())}
         type="button"

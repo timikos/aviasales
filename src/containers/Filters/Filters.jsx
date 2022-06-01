@@ -17,9 +17,7 @@ const Filters = () => {
       <FormGroup className="filter__checkbox-group">
         <FormControlLabel
           checked={state.filters.all}
-          onChange={() => {
-            dispatch(checkboxActions.setCheckboxAll())
-          }}
+          onChange={() => dispatch(checkboxActions.setCheckboxAll())}
           className="filter__checkbox"
           control={<Checkbox />}
           label="Все"

@@ -1,24 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
-import { fetchTickets } from '../../redux/actions/tickets'
 import './TicketList.scss'
 import Ticket from '../Ticket'
-
-function filterElements(arr, len) {
-  return arr.map((elem, index) => {
-    if (index < len) {
-      return (
-        <li key={index}>
-          <Ticket
-            index={index}
-            {...elem}
-          />
-        </li>
-      )
-    }
-  })
-}
 
 const TicketList = () => {
   const state = useSelector(state => ({
@@ -27,28 +10,54 @@ const TicketList = () => {
     loadingTickets: state.ticketsReducer.loadingTickets,
     searchId: state.ticketsReducer.searchId,
     showLen: state.ticketsReducer.showLen,
-    filters: state.filterReducer
+    filters: state.filterReducer,
+    sort: state.sortReducer.sort
   }))
-  const dispatch = useDispatch()
-  const tmpArr = state.tickets
+  let ticketsArr = []
 
-  const elementsAll = tmpArr.filter(elem => elem)
-  const elementsWithout = tmpArr.filter(elem => elem.segments[0].stops.length === 0)
-  const elementsOne = tmpArr.filter(elem => elem.segments[0].stops.length === 1)
-  const elementsTwo = tmpArr.filter(elem => elem.segments[0].stops.length === 2)
-  const elementsThree = tmpArr.filter(elem => elem.segments[0].stops.length === 3)
-  let elements = []
-
-  if (state.filters.all) {
-    elements.push(filterElements(elementsAll, state.showLen))
+  if (state.filters.without === true) {
+    ticketsArr = [...ticketsArr,
+      ...state.tickets.filter(elem => elem.segments[0].stops.length === 0)]
   }
-  useEffect(() => {
-    dispatch(fetchTickets(state.searchId))
-  }, [state.searchId, state.showLen])
-
+  if (state.filters.one === true) {
+    ticketsArr = [...ticketsArr,
+      ...state.tickets.filter(elem => elem.segments[0].stops.length === 1)]
+  }
+  if (state.filters.two === true) {
+    ticketsArr = [...ticketsArr,
+      ...state.tickets.filter(elem => elem.segments[0].stops.length === 2)]
+  }
+  if (state.filters.three === true) {
+    ticketsArr = [...ticketsArr,
+      ...state.tickets.filter(elem => elem.segments[0].stops.length === 3)]
+  }
+  if (state.filters.all === true) {
+    ticketsArr = [...state.tickets]
+  }
+  state.sort === 'cheap' ? ticketsArr.sort((a, b) => a.price - b.price) : null
+  state.sort === 'fast'
+    ? ticketsArr.sort((a, b) => a.segments[0].duration - b.segments[0].duration)
+    : null
+  state.sort === 'optimal'
+    ? ticketsArr.sort(
+      (a, b) => (a.price + a.segments[0].duration) - (b.price + b.segments[0].duration)
+    )
+    : null
+  console.log(ticketsArr)
   return (
     <ul className="ticket-list__container">
-      {elements}
+      {ticketsArr.slice(0, state.showLen).map((elem, index) => {
+        return (
+          <li key={index}>
+            <Ticket
+              tickets={ticketsArr}
+              elem={elem}
+              {...elem}
+            />
+          </li>
+        )
+      })}
+
     </ul>
   )
 }

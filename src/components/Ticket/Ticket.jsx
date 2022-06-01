@@ -1,16 +1,12 @@
-import { useSelector } from 'react-redux'
 import './Ticket.scss'
 
-const Ticket = ({ index }) => {
-  const state = useSelector(state => ({
-    tickets: state.ticketsReducer.tickets
-  }))
-  if (state.tickets.length > 0) {
-    const hoursPathTo = Math.floor(state.tickets[index].segments[0].duration / 60)
-    const minutesPathTo = Math.floor(state.tickets[index].segments[0].duration % 60)
+const Ticket = ({ tickets, elem }) => {
+  if (tickets.length > 0) {
+    const hoursPathTo = Math.floor(elem.segments[0].duration / 60)
+    const minutesPathTo = Math.floor(elem.segments[0].duration % 60)
     const timePathTo = `${hoursPathTo}ч ${minutesPathTo}м`
-    const hoursDepTo = new Date(state.tickets[index].segments[0].date).getHours()
-    const minutesDepTo = new Date(state.tickets[index].segments[0].date).getMinutes()
+    const hoursDepTo = new Date(elem.segments[0].date).getHours()
+    const minutesDepTo = new Date(elem.segments[0].date).getMinutes()
     const timeDepTo = `${hoursDepTo > 9
       ? hoursDepTo
       : '0' + hoursDepTo}:${minutesDepTo > 9
@@ -25,11 +21,11 @@ const Ticket = ({ index }) => {
       ? minutesArrivalTo
       : '0' + minutesArrivalTo}`
 
-    const hoursPathFrom = Math.floor(state.tickets[index].segments[1].duration / 100)
-    const minutesPathFrom = Math.floor(state.tickets[index].segments[1].duration % 100)
+    const hoursPathFrom = Math.floor(elem.segments[1].duration / 100)
+    const minutesPathFrom = Math.floor(elem.segments[1].duration % 100)
     const timePathFrom = `${hoursPathFrom}ч ${minutesPathFrom}м`
-    const hoursDepFrom = new Date(state.tickets[index].segments[1].date).getHours()
-    const minutesDepFrom = new Date(state.tickets[index].segments[1].date).getMinutes()
+    const hoursDepFrom = new Date(elem.segments[1].date).getHours()
+    const minutesDepFrom = new Date(elem.segments[1].date).getMinutes()
     const timeDepFrom = `${hoursDepFrom > 9
       ? hoursDepFrom
       : '0' + hoursDepFrom}:${minutesDepFrom > 9
@@ -46,9 +42,9 @@ const Ticket = ({ index }) => {
     return (
       <div className="ticket__container">
         <p className="ticket__price">
-          {state.tickets[index].price} Р
+          {elem.price} Р
         </p>
-        <img className="ticket__logo" src={`//pics.avs.io/99/36/${state.tickets[index].carrier}.png`} alt="logo-company" />
+        <img className="ticket__logo" src={`//pics.avs.io/99/36/${elem.carrier}.png`} alt="logo-company" />
         <div className="ticket__data">
           <div className="ticket__column">
             <p>MOW - HKT</p>
@@ -65,14 +61,14 @@ const Ticket = ({ index }) => {
             </p>
           </div>
           <div className="ticket__column">
-            {state.tickets[index].segments[0].stops.length === 0
+            {elem.segments[0].stops.length === 0
               ? <p>БЕЗ ПЕРЕСАДОК</p>
-              : state.tickets[index].segments[0].stops.length === 1
+              : elem.segments[0].stops.length === 1
                 ? <p>1 ПЕРЕСАДКА</p>
-                : state.tickets[index].segments[0].stops.length === 2
+                : elem.segments[0].stops.length === 2
                   ? <p>2 ПЕРЕСАДКИ</p>
                   : <p>3 ПЕРЕСАДКИ</p>}
-            <p>{state.tickets[index].segments[0].stops.join(', ')}</p>
+            <p>{elem.segments[0].stops.join(', ')}</p>
           </div>
         </div>
         <div className="ticket__data">
@@ -91,14 +87,14 @@ const Ticket = ({ index }) => {
             </p>
           </div>
           <div className="ticket__column">
-            {state.tickets[index].segments[1].stops.length === 0
+            {elem.segments[1].stops.length === 0
               ? <p>БЕЗ ПЕРЕСАДОК</p>
-              : state.tickets[index].segments[1].stops.length === 1
+              : elem.segments[1].stops.length === 1
                 ? <p>1 ПЕРЕСАДКА</p>
-                : state.tickets[index].segments[1].stops.length === 2
+                : elem.segments[1].stops.length === 2
                   ? <p>2 ПЕРЕСАДКИ</p>
                   : <p>3 ПЕРЕСАДКИ</p>}
-            <p>{state.tickets[index].segments[1].stops.join(', ')}</p>
+            <p>{elem.segments[1].stops.join(', ')}</p>
           </div>
         </div>
       </div>

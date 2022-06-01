@@ -31,6 +31,7 @@
     "no-nested-ternary": "off",
     "no-use-before-define": "off",
     "default-param-last": "off",
+    "react/jsx-one-expression-per-line": "off",
     "react/function-component-definition": "off",
     "react/jsx-indent-props": "off",
     "import/no-cycle": "off",
