@@ -9,7 +9,8 @@ import {
 
 const initialState = {
   tickets: [],
-  loading: false,
+  loadingTickets: false,
+  loadingId: false,
   searchId: '',
   error: null,
   showLen: 5,
@@ -23,27 +24,27 @@ const ticketsReducer = (state = initialState, action) => {
     }
   case FETCH_TICKETS_START:
     return {
-      ...state, loading: true
+      ...state, loadingTickets: true
     }
   case FETCH_TICKETS_SUCCESS:
     return {
-      ...state, loading: false, tickets: action.tickets
+      ...state, loadingTickets: false, tickets: action.tickets
     }
   case FETCH_TICKETS_ERROR:
     return {
-      ...state, loading: false, error: action.error
+      ...state, loadingTickets: false, error: action.error
     }
   case FETCH_ID_START:
     return {
-      ...state, loading: true
+      ...state, loadingId: true
     }
   case FETCH_ID_SUCCESS:
     return {
-      ...state, loading: false, searchId: action.searchId
+      ...state, loadingId: false, searchId: action.searchId
     }
   case FETCH_ID_ERROR:
     return {
-      ...state, loading: false, error: action.error
+      ...state, loadingId: false, error: action.error
     }
   default:
     return state

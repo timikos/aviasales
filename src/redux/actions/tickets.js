@@ -50,17 +50,19 @@ export function fetchIdError(e) {
 
 export function fetchTickets(searchId) {
   return async dispatch => {
-    dispatch(fetchTicketsStart)
-    try {
-      const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
-      if (response.data.stop) {
-        return
+    // if (searchId) {
+      dispatch(fetchTicketsStart())
+      try {
+        const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
+        if (response.data.stop) {
+          return
+        }
+        const tickets = [...response.data.tickets]
+        dispatch(fetchTicketsSuccess(tickets))
+      } catch (e) {
+        dispatch(fetchTicketsError(e))
       }
-      const tickets = [...response.data.tickets]
-      dispatch(fetchTicketsSuccess(tickets))
-    } catch (e) {
-      dispatch(fetchTicketsError(e))
-    }
+    // }
   }
 }
 

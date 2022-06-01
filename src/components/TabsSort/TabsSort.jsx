@@ -18,7 +18,6 @@ const TabsSort = () => {
           name={state.activeSort.sort}
           id="btnradio1"
           autoComplete="off"
-          checked=""
           onChange={() => dispatch(setTabCheap())}
         />
         <label

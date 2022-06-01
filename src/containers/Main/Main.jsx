@@ -4,15 +4,19 @@ import TicketList from '../../components/TicketList'
 import TabsSort from '../../components/TabsSort'
 import './Main.scss'
 import * as ticketsActions from '../../redux/actions/tickets'
+import SpinnerLoad from '../../components/SpinnerLoad'
 
 const Main = () => {
   const state = useSelector(state => ({
+    loadingTickets: state.ticketsReducer.loadingTickets,
     showLen: state.ticketsReducer.showLen
   }))
-  console.log(state)
   const dispatch = useDispatch()
+  console.log(state.loadingTickets)
   return (
     <section className="main__container">
+      {state.loadingTickets ? <SpinnerLoad /> : null }
+      {/* <SpinnerLoad /> */}
       <TabsSort />
       <TicketList />
       <button
