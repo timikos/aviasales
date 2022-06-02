@@ -1,5 +1,3 @@
-import { Checkbox, FormControlLabel } from '@mui/material'
-
 import * as checkboxActions from '../redux/actions/filters'
 
 const filterObj = [
@@ -20,24 +18,4 @@ const filterObj = [
     func: checkboxActions.setCheckboxThree
   }]
 
-function createElementsFilters(values, dispatch) {
-  const elements = filterObj.map((elem, index) => {
-    return (
-      <FormControlLabel
-        key={index}
-        checked={values[index]}
-        onChange={() => dispatch(filterObj[index].func())}
-        className="filter__checkbox"
-        control={<Checkbox />}
-        label={filterObj[index].name}
-        sx={{
-          ml: 0,
-          mr: 0,
-        }}
-      />
-    )
-  })
-  return elements
-}
-
-export default createElementsFilters
+export default filterObj

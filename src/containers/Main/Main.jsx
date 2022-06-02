@@ -34,8 +34,7 @@ const Main = () => {
         >
           ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ!
         </button>
-        : null
-      }
+        : null}
     </section>
   )
 }
