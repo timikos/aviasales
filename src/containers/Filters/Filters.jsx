@@ -3,7 +3,7 @@ import './Filters.scss'
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 
-import filterObj from '../../models/filtersModel'
+import { filterObj } from '../../models/models'
 
 const Filters = () => {
   const state = useSelector(state => ({

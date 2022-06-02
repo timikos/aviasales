@@ -1,6 +1,22 @@
+import { setTabCheap, setTabFast, setTabOptimal } from '../redux/actions/sorts'
 import * as checkboxActions from '../redux/actions/filters'
 
-const filterObj = [
+export const objSorts = [
+  {
+    name: 'САМЫЙ ДЕШЕВЫЙ',
+    func: setTabCheap
+  },
+  {
+    name: 'САМЫЙ БЫСТРЫЙ',
+    func: setTabFast
+  },
+  {
+    name: 'ОПТИМАЛЬНЫЙ',
+    func: setTabOptimal
+  }
+]
+
+export const filterObj = [
   {
     name: 'Все',
     func: checkboxActions.setCheckboxAll
@@ -17,5 +33,3 @@ const filterObj = [
     name: '3 пересадки',
     func: checkboxActions.setCheckboxThree
   }]
-
-export default filterObj

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import objSorts from '../../models/tabsModel'
+import { objSorts } from '../../models/models'
 import './TabsSort.scss'
 import * as ticketAction from '../../redux/actions/tickets'
 
