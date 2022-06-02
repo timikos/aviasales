@@ -14,34 +14,30 @@ const TicketList = () => {
     sort: state.sortReducer.sort
   }))
   let ticketsArr = []
-  if (state.filters.without === true) {
+  const filterTicketsTemplate = (tickets, count) => {
     ticketsArr = [...ticketsArr,
-      ...state.tickets.filter(elem => elem.segments[0].stops.length === 0)]
+      ...tickets.filter(elem => elem.segments[0].stops.length === count)]
   }
-  if (state.filters.one === true) {
-    ticketsArr = [...ticketsArr,
-      ...state.tickets.filter(elem => elem.segments[0].stops.length === 1)]
+  const filterTickets = (filter, tickets) => {
+    filter.without ? filterTicketsTemplate(state.tickets, 0) : null
+    filter.one ? filterTicketsTemplate(state.tickets, 1) : null
+    filter.two ? filterTicketsTemplate(state.tickets, 2) : null
+    filter.three ? filterTicketsTemplate(state.tickets, 3) : null
+    filter.all ? [...tickets] : null
   }
-  if (state.filters.two === true) {
-    ticketsArr = [...ticketsArr,
-      ...state.tickets.filter(elem => elem.segments[0].stops.length === 2)]
+  const sortTickets = (sort) => {
+    sort === 'cheap' ? ticketsArr.sort((a, b) => a.price - b.price) : null
+    sort === 'fast'
+      ? ticketsArr.sort((a, b) => a.segments[0].duration - b.segments[0].duration)
+      : null
+    sort === 'optimal'
+      ? ticketsArr.sort(
+        (a, b) => (a.price + a.segments[0].duration) - (b.price + b.segments[0].duration)
+      )
+      : null
   }
-  if (state.filters.three === true) {
-    ticketsArr = [...ticketsArr,
-      ...state.tickets.filter(elem => elem.segments[0].stops.length === 3)]
-  }
-  if (state.filters.all === true) {
-    ticketsArr = [...state.tickets]
-  }
-  state.sort === 'cheap' ? ticketsArr.sort((a, b) => a.price - b.price) : null
-  state.sort === 'fast'
-    ? ticketsArr.sort((a, b) => a.segments[0].duration - b.segments[0].duration)
-    : null
-  state.sort === 'optimal'
-    ? ticketsArr.sort(
-      (a, b) => (a.price + a.segments[0].duration) - (b.price + b.segments[0].duration)
-    )
-    : null
+  filterTickets(state.filters, state.tickets, ticketsArr)
+  sortTickets(state.sort)
   return (
     <ul className="ticket-list__container">
       {ticketsArr.slice(0, state.showLen).map((elem, index) => {
